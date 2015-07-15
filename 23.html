@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello SeaQuery</title>
+
+    <script>
+
+            var seaQuery = function (s) {
+                var x=null;
+                switch (typeof(s)) {
+                    case "function":
+                        break;
+                    case "string":
+                        x =select.getStr(s);
+                        break;
+                    case "object":
+                        break;
+                    case "undefined":
+                        break;
+                    default:
+                        break;
+                }
+                this.doms=x;
+                return this;
+            };
+            //选择器处理
+            var select = {
+                getStr: function (s) {
+                    switch (s.charAt(0)) {
+                        case "#":  //获取ID
+                          document.getElementById(s.substr(1));
+                            break;
+                        case "."://获取Class
+                           document.getElementsByClassName(s.substr(1));
+                            break;
+                        default:
+                            break;
+                    }
+                    return this;
+                }
+
+            };
+            //方法
+            seaQuery.prototype = {
+                fk:function(){
+                    alert("123");
+                },
+                sts:"123asdf",
+                htmls: function () {
+                    return this.doms.innerHTML;
+                }
+            };
+
+          var s=function(s) {
+              new seaQuery(s);
+          }
+
+         alert(s("asdf").fk());
+//        window.onload=function(){
+//           alert($("#container").sts);
+//
+//        }
+
+    </script>
+</head>
+<body>
+<h1 id="container" class="box">seaQuery</h1>
+</body>
+</html>

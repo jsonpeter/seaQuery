@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Hello SeaQuery</title>
+    <script type="text/javascript" language="javascript" src="js/sea-debug.js" charset="GBK"></script>
+    <script>
+        // Set configuration
+        seajs.config({
+            base: "../SeaJs/js/"
+        });
+        seajs.use("testmain");
+    </script>
+</head>
+<body>
+<h1 id="container" class="box"><b style="color:red">dividividvidvid</b>seaQuery1</h1>
+<div id="test">123123
+    <p>IDtest中的p标签</p>
+</div>
+<h2 class="test">Class testing!!!</h2>
+<p>阿士大夫</p>
+<div  id="btnok" class="same" style="background: #3c3c3c;">单个ID的$(#btnok).click</div>
+<div  id="btnok2" class="same">多个Class的$(.same).click</div>
+</body>
+</html>
