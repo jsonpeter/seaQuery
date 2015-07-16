@@ -132,6 +132,21 @@ define(function(require, exports, module) {
             //共用同样方法
            return arguments.length>0?this.html(arguments):this.html();
         },
+        attr:function(){
+            var that=this,a=arguments;
+
+            var fn=function(c){
+                if(a.length==1){
+                    that=c.getAttribute(a[0]);
+                }else if(arguments.length==2){
+                    c.setAttribute(a[0],a[1]);
+                }
+            }
+            af.domslt.call(this,this.doms,function(callback){
+                fn(callback);
+            });
+            return that;
+        },
         show:function(){
            var fn=function(s){
                 s.style.display="block";

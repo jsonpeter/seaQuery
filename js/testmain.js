@@ -2,12 +2,12 @@ define(function(require, exports, module) {
     var $ = require('seaQuery');
     $(function () {
 
-        alert($("#container").html());
+        alert($("#container").attr("data"));
         $("#test,.test").html("js wirteout");
         $("#container b").html("hellooooooooooo!");
 
        var obj=$("#container").html("111111");
-        obj.hide();
+        //obj.hide();
         //$(".same").click(function(){
         //      alert($(this).html());
         //})
