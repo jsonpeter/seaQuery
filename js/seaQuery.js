@@ -95,6 +95,9 @@ define(function(require, exports, module) {
             return this;
         },
          this.event ={
+             //t 当前指针this
+             //e 事件名称click
+             //n 执行方法function
              add:function (t,e,n){
                  var fn=function(f){
                      EventUtil.addEventHandler(e,f,n);
@@ -178,14 +181,23 @@ define(function(require, exports, module) {
                 e.cancelBubble=true;
             }
         },
-        bind:function(e,n){
-           af.event.add(this,e,n);
+        bind:function(e,fn){
+           af.event.add(this,e,fn);
         }
     };
+
     var evenName=("blur focus focusin focusout load resize scroll unload click dblclick " +
     "mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
     "change select submit keydown keypress keyup error contextmenu").split(" ");
-    //绑定事件
+    //eveName绑定事件
+    for(var i=0;i<evenName.length;i++) {
+        (function(i){
+          seaQuery.fn[evenName[i]]=function(fn){
+              console.log(fn);
+              af.event.add(this,evenName[i],fn);
+          }
+      })(i)
+    }
     var EventUtil = new Object;
     EventUtil.addEventHandler = function (sEventType,oTarget,fnHandler) {
         if (oTarget.addEventListener) { // 如果还没有绑定click事件，则进行绑定。页面载入时候会执行这里。
