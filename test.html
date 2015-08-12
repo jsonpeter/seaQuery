@@ -5,6 +5,37 @@
     <title>Hello SeaQuery</title>
     <script type="text/javascript" language="javascript" src="js/sea-debug.js" charset="GBK"></script>
     <script>
+        function testRegx(){
+            var f=/^\w+\@\w+\.\w{1,4}$/gi;
+           var email=document.getElementById("testRegx").value;
+            console.log(f.test(email)+"-----"+ email.match(f));
+        }
+       function fn1(){
+
+         fn3(fn2);
+         fn4();
+
+       }
+       function fn2(){
+
+           alert(this.name);
+           console.log("fn2:---fn3执行完成-----"+Date.now())
+       }
+       function fn3(fns){
+           this.name="fn3 name";
+           this.test="call testing!!!!";
+           (function(that){setTimeout(function(){
+               for(i=0;i<100000000;i++){
+
+               }
+               console.log("fn3:---执行完成!-----"+Date.now())
+               fns.call(that);
+           },0)})(this)
+       }
+       function fn4(){
+           console.log("fn4:----继续执行----"+Date.now())
+       }
+       //fn1();
         // Set configuration
         seajs.config({
             base: "../SeaJs/js/"
@@ -13,6 +44,7 @@
     </script>
 </head>
 <body>
+<input type="text" id="testRegx" onclick="testRegx()" value="asdfasdf@asdf.com">
 <h1 id="container" data="dataArite" class="box"><b style="color:red">dividividvidvid</b>seaQuery1</h1>
 <div id="test">123123
     <p>IDtest中的p标签</p>
